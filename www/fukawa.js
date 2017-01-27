@@ -39,32 +39,38 @@ function fukawa(){
         var aq=parseInt(deban+maime);
       switch(day.getDay()){
            case 0:
-               var c="<ons-list-item style='background-color: red' tappable>";
+               var c="<ons-list-item style='background-color: red'";
                var job=nichiyo[aq];
                break;
            case 6:
                if(kyu.indexOf(hi(add))>0){
-           　     var c="<ons-list-item style='background-color: fuchsia' tappable>";
+           　     var c="<ons-list-item style='background-color: fuchsia";
                var job=nichiyo[aq];
                break;}
-               var c="<ons-list-item style='background-color: aqua' tappable>";
+               var c="<ons-list-item style='background-color: aqua'";
                var job=doyo[aq];
                break;
            default:
            　if(kyu.indexOf(hi(add))>0){
-           　     var c="<ons-list-item style='background-color: fuchsia' tappable>";
+           　     var c="<ons-list-item style='background-color: fuchsia'";
                var job=nichiyo[aq];
                break;
            　}
                
                var job=ar[aq];
-               var c="<ons-list-item title="+job+" onclick='al(this);' tappable>";
+               var c="<ons-list-item  ";
                break;
        }
     //var aq=parseInt(deban+maime);
     if (job=="   "){job="白";}
     if (job==undefined || deban=="7"){job="休み";}//or maime="7"
-       k += c+ hi(add).slice(5) + w +deban+maime+" "+job +'</ons-list-item>';
+    var result=job.split(" ");
+    //var r1=result[1].replace(":","");
+   // var r2=result[2].replace(":","");
+   // var tako=hi(add)+r1+"00"+hi(add)+r2+"00";
+    //alert(tako);
+       k += c+"tit="+" onclick='al(this);'  tappable>"+hi(add).slice(5) + w +deban+maime+" "+job +"</ons-list-item>";
+       console.log(c);
       if (((add.getTime()-ad.getTime())/(24*60*60*1000))%28!=0){deban+=1;}else{deban=deban;}
       aday(add);
       }while(deban<8);
@@ -74,6 +80,6 @@ function fukawa(){
    document.getElementById("test").innerHTML = k;
 }
 function al(obj){
-    var title = obj.getAttribute('title');
+    var title = obj.getAttribute('tit');
 alert ( title );
 }
