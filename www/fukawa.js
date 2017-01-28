@@ -65,12 +65,15 @@ function fukawa(){
     if (job=="   "){job="白";}
     if (job==undefined || deban=="7"){job="休み";}//or maime="7"
     var result=job.split(" ");
-    //var r1=result[1].replace(":","");
-   // var r2=result[2].replace(":","");
-   // var tako=hi(add)+r1+"00"+hi(add)+r2+"00";
-    //alert(tako);
-       k += c+"tit="+" onclick='al(this);'  tappable>"+hi(add).slice(5) + w +deban+maime+" "+job +"</ons-list-item>";
-       console.log(c);
+    if(result[1]){
+    var r1=("0"+result[1].replace(":","")).slice(-4);
+    var r2=("0"+result[2].replace(":","")).slice(-4);
+    var tako=hii(add)+r1+"00"+hii(add)+r2+"00";
+   }else{
+   var tako=hii(add);
+   }
+       k += c+"tit="+tako+" onclick='al(this);'  tappable>"+hi(add).slice(5) + w +deban+maime+" "+job +"</ons-list-item>";
+      
       if (((add.getTime()-ad.getTime())/(24*60*60*1000))%28!=0){deban+=1;}else{deban=deban;}
       aday(add);
       }while(deban<8);
