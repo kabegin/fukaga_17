@@ -66,20 +66,116 @@ function fukawa(){
     if (job==undefined || deban=="7"){job="休み";}//or maime="7"
     var result=job.split(" ");
     if(result[1]){
-    var r1=("0"+result[1].replace(":","")).slice(-4);
-    var r2=("0"+result[2].replace(":","")).slice(-4);
-    var tako=hii(add)+"T"+r1+"00"+"/"+hii(add)+"T"+r2+"00";
-   }else{
-       var pqr=new Date(add.getTime()+24*60*60*1000);
-       var tako=hii(add)+"/"+hii(pqr);
-   }
-       k += c+"tit="+tako+" tic="+deban+maime+" onclick='al(this);'  tappable>"+hi(add).slice(5) + w +deban+maime+" "+job +"</ons-list-item>";
+      var r1=("0"+result[1].replace(":","")).slice(-4);
+      var r2=("0"+result[2].replace(":","")).slice(-4);
+      var tako=hii(add)+"T"+r1+"00"+"/"+hii(add)+"T"+r2+"00";
+       }else{
+        var pqr=new Date(add.getTime()+24*60*60*1000);
+        var tako=hii(add)+"/"+hii(pqr);
+     }
+       k += c+"tit="+tako+" tic="+deban+maime+result[0]+" onclick='al(this);'  tappable>"+hi(add).slice(5) + w +deban+maime+" "+job +"</ons-list-item>";
       
       if (((add.getTime()-ad.getTime())/(24*60*60*1000))%28!=0){deban+=1;}else{deban=deban;}
       aday(add);
       }while(deban<8);
       maime=(parseInt(maime, 10))%48+1;
       if (maime<10){maime="0"+maime;}
+      
+          for(j=1;j<30;j++){
+     for (i=1;i<8;i++){
+         day=new Date(hi(add));
+         w=week[day.getDay()];
+         
+         if (((add.getTime()-ad.getTime())/(24*60*60*1000))%28==0){
+             var aq=(""+i+maime);
+             switch(day.getDay()){
+           case 0:
+               var c="<ons-list-item style='background-color: red'";
+               var job=nichiyo[aq];
+               break;
+           case 6:
+               if(kyu.indexOf(hi(add))>0){
+           　     var c="<ons-list-item style='background-color: fuchsia'";
+               var job=nichiyo[aq];
+               break;}
+               var c="<ons-list-item style='background-color: aqua'";
+               var job=doyo[aq];
+               break;
+           default:
+              
+           　if(kyu.indexOf(hi(add))>0){
+           　     var c="<ons-list-item style='background-color: fuchsia'";
+               var job=nichiyo[aq];
+               break;}
+               var c="<ons-list-item  ";
+               var job=ar[aq];
+               break;
+       }
+              if (job=="   "){job="白";}
+         if (job==undefined || i==7){job="休み";}
+        var result=job.split(" ");
+    if(result[1]){
+      var r1=("0"+result[1].replace(":","")).slice(-4);
+      var r2=("0"+result[2].replace(":","")).slice(-4);
+      var tako=hii(add)+"T"+r1+"00"+"/"+hii(add)+"T"+r2+"00";
+       }else{
+        var pqr=new Date(add.getTime()+24*60*60*1000);
+        var tako=hii(add)+"/"+hii(pqr);
+     }  
+    //   k += c+'<th>' + hi(add) + '</th><td>' + w + '</td><td>' +i+maime+" "+job +'</td></tr>';
+       k += c+"tit="+tako+" tic="+aq+result[0]+" onclick='al(this);'  tappable>"+hi(add).slice(5) + w +aq+" "+job +"</ons-list-item>";
+      
+     aday(add);
+      day=new Date(hi(add));
+         w=week[day.getDay()];
+        
+             } 
+         var aq=(""+i+maime);
+          switch(day.getDay()){
+           case 0:
+               var c="<ons-list-item style='background-color: red'";
+               var job=nichiyo[aq];
+               break;
+           case 6:
+               if(kyu.indexOf(hi(add))>0){
+           　     var c="<ons-list-item style='background-color: fuchsia'";
+               var job=nichiyo[aq];
+               break;}
+               var c="<ons-list-item style='background-color: aqua'";
+               var job=doyo[aq];
+               break;
+           default:
+           if(kyu.indexOf(hi(add))>0){
+           　     var c="<ons-list-item style='background-color: fuchsia'";
+               var job=nichiyo[aq];
+               break;}
+           
+               var c="<ons-list-item  ";
+               var job=ar[aq];
+               break;
+       }
+         if (job=="   "){job="白";}
+         if (job==undefined || i==7){job="休み";}
+         
+        var result=job.split(" ");
+    if(result[1]){
+      var r1=("0"+result[1].replace(":","")).slice(-4);
+      var r2=("0"+result[2].replace(":","")).slice(-4);
+      var tako=hii(add)+"T"+r1+"00"+"/"+hii(add)+"T"+r2+"00";
+       }else{
+        var pqr=new Date(add.getTime()+24*60*60*1000);
+        var tako=hii(add)+"/"+hii(pqr);
+     }  
+    //   k += c+'<th>' + hi(add) + '</th><td>' + w + '</td><td>' +i+maime+" "+job +'</td></tr>';
+      k += c+"tit="+tako+" tic="+aq+result[0]+" onclick='al(this);'  tappable>"+hi(add).slice(5) + w +aq+" "+job +"</ons-list-item>";
+        
+      aday(add);
+     }
+     maime=(parseInt(maime, 10))%48+1;
+     if (maime<10){maime="0"+maime;}
+}
+    k += '</table><input type="button" value="前のページへ戻る" onclick="location.reload(true)">';
+   document.getElementById("test").innerHTML = k ;
  k += '<input type="button" value="前のページへ戻る" onclick="location.reload(true)">';
    document.getElementById("test").innerHTML = k;
 }
@@ -92,5 +188,13 @@ function al(obj){
    te.innerHTML=title;
   modal.toggle();
   */
-  location.href ="http://www.google.com/calendar/event?action=TEMPLATE&text="+tic+"&dates="+title;
+//window.open("http://www.google.com/calendar/event?action=TEMPLATE&text="+tic+"&dates="+title);
+window.open("https://calendar.google.com/calendar/gp?pli=1#~calendar:view=e&bm=1&action=TEMPLATE&text="+tic+"&dates="+title);
+
+
+
+
+
+
+
 }
