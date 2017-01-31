@@ -431,15 +431,16 @@ function fukawa1(){
 function ni(a,b){
     //alert(a);
     //alert(b);
-    var num1=document.keisan.elements[0].value;
+    var num1=document.getElementById('daiya').value;
+     if (num1==""){num1="101";}
     var maime=String(num1.slice(-2));
     var deban=parseInt(num1.slice(0,1),10);
     var ad=new Date("2016/02/06");
     var add=new Date();
     var nana=0;
     add.setHours(0, 0, 0, 0);
-    var k ='<input type="button" value="前のページへ戻る" onclick="location.reload(true)"><table class=thin id=hyo><caption style="background-color:green">個別予定表</caption>';
-    k += '<tr><th bgcolor="#3DF74A">年月日</th><th bgcolor="#3DF74A">曜</th><th bgcolor="#3DF74A">予定</th></tr>'; 
+    var k ='<ons-list><ons-button modifier="large" onclick="location.reload(true)">前のページへ戻る</ons-button>';
+    //k += '<tr><th bgcolor="#3DF74A">年月日</th><th bgcolor="#3DF74A">曜</th><th bgcolor="#3DF74A">予定</th></tr>'; 
      //   k += '</table>';
    
 //   document.write(ad);
@@ -450,15 +451,15 @@ day = new Date(hi(add));//iには'2007/5/5':'PHP攻略完了'の形式の前の�
         var aq=parseInt(deban+maime,10);
       switch(day.getDay()){
            case 0:
-               var c="<tr bgcolor='red'>";
+               var c="<ons-list-item style='background-color: red'";
                var job="休み";
                break;
            case 6:
                if(kyu.indexOf(hi(add))>0){
-           　     var c="<tr bgcolor='pink'>";
+           　     var c="<ons-list-item style='background-color: fuchsia";
                var job="休み";
                break;}
-               var c="<tr bgcolor='aqua'>";
+               var c="<ons-list-item style='background-color: aqua'";
                //var job=doyo[aq];
                switch(a){
                  case 1:
@@ -477,18 +478,29 @@ day = new Date(hi(add));//iには'2007/5/5':'PHP攻略完了'の形式の前の�
                break;
            default:
            　if(kyu.indexOf(hi(add))>0){
-           　     var c="<tr bgcolor='pink'>";
+           　     var c="<ons-list-item style='background-color: fuchsia'";
                var job="休み";
                break;
            　}
-               var c="<tr bgcolor='white'>";
+               var c="<ons-list-item  ";
                var job=ar[aq];
                break;
        }
     //var aq=parseInt(deban+maime);
     if (job=="   "){job="白";}
     if (job==undefined){job="白";}
-       k += c+'<th>' + hi(add) + '</th><td>' + w + '</td><td>' +deban+maime+" "+job +'</td></tr>';
+     var result=job.split(" ");
+    if(result[1]){
+      var r1=("0"+result[1].replace(":","")).slice(-4);
+      var r2=("0"+result[2].replace(":","")).slice(-4);
+      var tako=hii(add)+"T"+r1+"00"+"/"+hii(add)+"T"+r2+"00";
+       }else{
+        var pqr=new Date(add.getTime()+24*60*60*1000);
+        var tako=hii(add)+"/"+hii(pqr);
+     }
+     k += c+"tit="+tako+" tic="+deban+maime+result[0]+" onclick='al(this);'  tappable>"+hi(add).slice(5) + w +deban+maime+" "+job +"</ons-list-item>";
+      
+     //  k += c+'<th>' + hi(add) + '</th><td>' + w + '</td><td>' +deban+maime+" "+job +'</td></tr>';
       if (((add.getTime()-ad.getTime())/(24*60*60*1000))%28!=1){deban+=1;}else{deban=deban;}
       aday(add); 
       if (deban==8){deban=1};
@@ -511,7 +523,9 @@ day = new Date(hi(add));//iには'2007/5/5':'PHP攻略完了'の形式の前の�
  //   if(day.getDay()==1&&deban==7&&nana==1){if(b==2){b=1,nana=0;}else{b=2,nana=0;}}
 }
 //if (((add.getTime()-ad.getTime())/(24*60*60*1000))%28!=1){deban+=1;}else{deban=deban;}
- k += '</table><input type="button" value="前のページへ戻る" onclick="location.reload(true)">';
+
+    k += '<ons-button modifier="large" onclick="location.reload(true)">前のページへ戻る</ons-button>';
+    //k += '</table><input type="button" value="前のページへ戻る" onclick="location.reload(true)">';
       document.getElementById("all").innerHTML = k; 
 k += '<br/><br/><br/><br/><br/>';
    document.getElementById("all").innerHTML = k;
