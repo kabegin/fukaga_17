@@ -1,96 +1,110 @@
-var week = new Array("日","月","火","水","木","金","土"); 
-var ncmb = new NCMB("df633acb61dd206f958dd000d79c34ac758cee4049874ad66248ec23171cf51d","e1e4e337b303e26a2c67dae2e8f8641e4d7851e3bf07c3aaa53024b3717a2b7a");     
-
-function getToday(){
-var now = new Date();
-var yyyy = now.getFullYear();
-var mm = now.getMonth() + 1;
-var dd = now.getDate();
-//if(mm < 10) mm = "0" + mm;
-//if(dd < 10) dd = "0" + dd;
-return "" + yyyy +"/"+ mm+"/"+ + dd;
-}
-function aday(ab){
- //   alert(ab);
-    var dayOfMonth=ab.getDate();
-ab.setDate(dayOfMonth+1);
-//alert(ab);
-return ab;
-}
-function hi(af){
-var yyyy = af.getFullYear();
-var mm = af.getMonth() + 1;
-var dd = af.getDate();
-return ""+yyyy+"/"+mm+"/"+dd;    
-}
-function hii(af){
-var yyyy = af.getFullYear();
-var mm = af.getMonth() + 1;
-if(mm<10){mm="0"+mm;}
-var dd = af.getDate();
-if(dd<10){dd="0"+dd;}
-return ""+yyyy+mm+dd;    
-}
-function getExpires(dd){
-var now = new Date();
-var expires = new Date(now.getTime()+24*60*60*1000*dd);
-return(expires.toGMTString());
-}
-function a1(){
+ // https://mb.api.cloud.nifty.com/2013-09-01/applications/EIcVuJgSJVJltWxJ/publicFiles/101.jpg
+   // var NCMB = NCMB || require("./ncmb");
+      //  var ncmb = new NCMB("6ca2ff8ccaa6bf29a5f132fb86e855f54a053f6cb052ca6eb4cac54384344b92","8530ec559cbc8f3e173359c1a64a7e614249a8632a95f6cafdc8791dbaaaa813");     
+       //ncmb.User.loginWithMailAddress("kabegin@gmail.com");
+ function redy(){
+     var user = ncmb.User.getCurrentUser();
+  
+      var user1=user.get("mailAddress");
+      //ncmb.User.login(user1);
+          //if (user) {
+            if(ncmb.sessionToken){
+               fn.load('kaiin.html');
+          }   
+       }
+            // ログイン・新規登録処理
+     function taku() {
+                var username =document.getElementById("mail").value;
+                var password =document.getElementById("pass").value;
+               // alert(username);
+                // ログイン
+               // var ncmb = new NCMB("6ca2ff8ccaa6bf29a5f132fb86e855f54a053f6cb052ca6eb4cac54384344b92","8530ec559cbc8f3e173359c1a64a7e614249a8632a95f6cafdc8791dbaaaa813");     
+                ncmb.User.loginWithMailAddress(username, password)
+                .then(function() {
+                    // ログイン成功
+                //     alert("ログイン成功");
+                    fn.load('kaiin.html');
+                })
+                .catch(function(err) {
+                    // ログイン失敗
+                    alert(err);
+                        });
+                    }
+             function shin() {
+           var username =document.getElementById("mail").value;
+           //alert(username);
+        //   var ncmb = new NCMB("6ca2ff8ccaa6bf29a5f132fb86e855f54a053f6cb052ca6eb4cac54384344b92","8530ec559cbc8f3e173359c1a64a7e614249a8632a95f6cafdc8791dbaaaa813");     
+    ncmb.User.requestSignUpEmail(username)
+         .then(function(data){
+            // 送信後処理
+            alert("送信しました。");
+         })
+         .catch(function(err){
+             
+           // エラー処理
+           alert(err);
+         });
+       } 
+    function rest(){
+       var username =document.getElementById("mail").value;
+      //     alert(username);
+      //     var ncmb = new NCMB("6ca2ff8ccaa6bf29a5f132fb86e855f54a053f6cb052ca6eb4cac54384344b92","8530ec559cbc8f3e173359c1a64a7e614249a8632a95f6cafdc8791dbaaaa813");     
+         var self=this;
+     var user=new self.ncmb.User({mailAddress:username});  
+         user.requestPasswordReset()
+           .then(function(data){
+               alert("送信しました。");
+           })
+           .catch(function(err){
+               alert(err);
+           });
+    }
+    function logout(){
+  
+        ncmb.User.logout().then(function(){
+            location.href="./index.html";
+        })
+        .catch(function(err){
+            alert(err);
+         //   ncmb.sessionToken = null;
+        }); 
+//ncmb.sessionToken = null;
+    }
+    
+ function xa1(){
     var a=1,b=1;
-    ni(a,b);
+    xni(a,b);
 }
-function b1(){
+function xb1(){
      var a=2,b=1;
-    ni(a,b);
+    xni(a,b);
 }
-function c1(){
+function xc1(){
      var a=3,b=1;
-    ni(a,b);
+    xni(a,b);
 }
-function d1(){
+function xd1(){
      var a=4,b=1;
-    ni(a,b);
+    xni(a,b);
 }
-function a2(){
+function xa2(){
      var a=1,b=2;
-    ni(a,b);
+    xni(a,b);
 }
-function b2(){
+function xb2(){
      var a=2,b=2;
-    ni(a,b);
+    xni(a,b);
 }
-function c2(){
+function xc2(){
      var a=3,b=2;
-    ni(a,b);
+    xni(a,b);
 }
-function d2(){
+function xd2(){
      var a=4,b=2;
-    ni(a,b);
+    xni(a,b);
 }
 
-var elmDiv = document.createElement('div');
-var spsLink = document.createElement('div');
-// spsLink.innerHTML = 'スポンサーリンク';
-elmDiv.appendChild(spsLink);
-var adsScr = document.createElement('script');
- adsScr.async = true;
- adsScr.src = '//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js';
-var adsIns = document.createElement('ins');
- adsIns.className = 'adsbygoogle';
- adsIns.style.display = 'block';
-/* XXX は置き換えてください */
- adsIns.dataset.adClient = 'ca-pub-5061506355151225';
- adsIns.dataset.adSlot= '3920317659';
- adsIns.dataset.adFormat = 'auto';
-var adsGgl = document.createElement('script');
-/* ［］は半角に置き換えてください */
- adsGgl.text = '(adsbygoogle = window.adsbygoogle ||[]).push({});';
-elmDiv.appendChild(adsScr);
-elmDiv.appendChild(adsIns);
-elmDiv.appendChild(adsGgl);
-
-function fukawa(){
+function xfukawa(){
  var num1=document.getElementById('daiya').value;
     if (num1==""){num1="101";}
     var maime=String(num1.slice(-2));
@@ -112,39 +126,36 @@ function fukawa(){
            case 0:
                var c="<ons-list-item style='background-color: red'";
                var job=nichiyo[aq];
+               var tako="7"+aq;
                break;
            case 6:
                if(kyu.indexOf(hi(add))>0){
-           　     var c="<ons-list-item style='background-color: fuchsia";
+           　     var c="<ons-list-item style='background-color: fuchsia'";
                var job=nichiyo[aq];
-               break;}
+               var tako="7"+aq;
+               break;
+               }
                var c="<ons-list-item style='background-color: aqua'";
                var job=doyo[aq];
+               var tako="6"+aq;
                break;
            default:
            　if(kyu.indexOf(hi(add))>0){
            　     var c="<ons-list-item style='background-color: fuchsia'";
                var job=nichiyo[aq];
+               var tako="7"+aq;
                break;
            　}
                
                var job=ar[aq];
+               var tako=""+aq
                var c="<ons-list-item  ";
                break;
        }
     //var aq=parseInt(deban+maime);
     if (job=="   "){job="白";}
     if (job==undefined || deban=="7"){job="休み";}//or maime="7"
-    var result=job.split(" ");
-    if(result[1]){
-      var r1=("0"+result[1].replace(":","")).slice(-4);
-      var r2=("0"+result[2].replace(":","")).slice(-4);
-      var tako=hii(add)+"T"+r1+"00"+"/"+hii(add)+"T"+r2+"00";
-       }else{
-        var pqr=new Date(add.getTime()+24*60*60*1000);
-        var tako=hii(add)+"/"+hii(pqr);
-     }
-       k += c+"tit="+tako+" tic="+deban+maime+result[0]+" onclick='al(this);'  tappable>"+hi(add).slice(5) + w +deban+maime+" "+job +"</ons-list-item>";
+    k += c+"tic="+tako+" onclick='xal(this);'  tappable>"+hi(add).slice(5) + w +deban+maime+" "+job +"</ons-list-item>";
       
       if (((add.getTime()-ad.getTime())/(24*60*60*1000))%28!=0){deban+=1;}else{deban=deban;}
       aday(add);
@@ -163,38 +174,35 @@ function fukawa(){
            case 0:
                var c="<ons-list-item style='background-color: red'";
                var job=nichiyo[aq];
+               var tako="7"+aq;
                break;
            case 6:
                if(kyu.indexOf(hi(add))>0){
            　     var c="<ons-list-item style='background-color: fuchsia'";
                var job=nichiyo[aq];
+               var tako="7"+aq;
                break;}
                var c="<ons-list-item style='background-color: aqua'";
                var job=doyo[aq];
+               var tako="6"+aq;
                break;
            default:
               
            　if(kyu.indexOf(hi(add))>0){
            　     var c="<ons-list-item style='background-color: fuchsia'";
                var job=nichiyo[aq];
+               var tako="7"+aq;
                break;}
                var c="<ons-list-item  ";
                var job=ar[aq];
+               var tako=""+aq;
                break;
        }
               if (job=="   "){job="白";}
          if (job==undefined || i==7){job="休み";}
-        var result=job.split(" ");
-    if(result[1]){
-      var r1=("0"+result[1].replace(":","")).slice(-4);
-      var r2=("0"+result[2].replace(":","")).slice(-4);
-      var tako=hii(add)+"T"+r1+"00"+"/"+hii(add)+"T"+r2+"00";
-       }else{
-        var pqr=new Date(add.getTime()+24*60*60*1000);
-        var tako=hii(add)+"/"+hii(pqr);
-     }  
+      
     //   k += c+'<th>' + hi(add) + '</th><td>' + w + '</td><td>' +i+maime+" "+job +'</td></tr>';
-       k += c+"tit="+tako+" tic="+aq+result[0]+" onclick='al(this);'  tappable>"+hi(add).slice(5) + w +aq+" "+job +"</ons-list-item>";
+       k += c+"tic="+tako+" onclick='xal(this);'  tappable>"+hi(add).slice(5) + w +aq+" "+job +"</ons-list-item>";
       
      aday(add);
       day=new Date(hi(add));
@@ -206,39 +214,36 @@ function fukawa(){
            case 0:
                var c="<ons-list-item style='background-color: red'";
                var job=nichiyo[aq];
+               var tako="7"+aq;
                break;
            case 6:
                if(kyu.indexOf(hi(add))>0){
            　     var c="<ons-list-item style='background-color: fuchsia'";
                var job=nichiyo[aq];
+               var tako="7"+aq;
                break;}
                var c="<ons-list-item style='background-color: aqua'";
                var job=doyo[aq];
+               var tako="6"+aq;
                break;
            default:
            if(kyu.indexOf(hi(add))>0){
            　     var c="<ons-list-item style='background-color: fuchsia'";
                var job=nichiyo[aq];
+               var tako="7"+aq;
                break;}
            
                var c="<ons-list-item  ";
                var job=ar[aq];
+               var tako=aq;
                break;
        }
          if (job=="   "){job="白";}
          if (job==undefined || i==7){job="休み";}
          
-        var result=job.split(" ");
-    if(result[1]){
-      var r1=("0"+result[1].replace(":","")).slice(-4);
-      var r2=("0"+result[2].replace(":","")).slice(-4);
-      var tako=hii(add)+"T"+r1+"00"+"/"+hii(add)+"T"+r2+"00";
-       }else{
-        var pqr=new Date(add.getTime()+24*60*60*1000);
-        var tako=hii(add)+"/"+hii(pqr);
-     }  
+       
     //   k += c+'<th>' + hi(add) + '</th><td>' + w + '</td><td>' +i+maime+" "+job +'</td></tr>';
-      k += c+"tit="+tako+" tic="+aq+result[0]+" onclick='al(this);'  tappable>"+hi(add).slice(5) + w +aq+" "+job +"</ons-list-item>";
+      k += c+"tic="+tako+" onclick='xal(this);'  tappable>"+hi(add).slice(5) + w +aq+" "+job +"</ons-list-item>";
         
       aday(add);
      }
@@ -246,23 +251,29 @@ function fukawa(){
      if (maime<10){maime="0"+maime;}
 }
  //   k += '<ons-button modifier="large" onclick="location.reload(true)">前のページへ戻る</ons-button>';
- //   document.getElementById("all").innerHTML = k ;
+ //  document.getElementById("all").innerHTML = k ;
  k += '<br/><br/><br/><br/><br/>';
    document.getElementById("all").innerHTML = k;
 }
-function al(obj){
-    var title = obj.getAttribute('tit');
+function xal(obj){
+  //  var title = obj.getAttribute('tit');
     var tic=obj.getAttribute('tic');
-/*alert ( title );
+//alert (tic);
+  //  if(!tic){tic="100";}
      var modal = document.getElementById('modal');
-     var te = document.getElementById('te');  
-   te.innerHTML=title;
+   var te = document.getElementById('te'); 
+     var imge="img/"+tic+".jpg";
+   te.innerHTML=tic;
+   document.getElementById('img').src=imge;
   modal.toggle();
-  */
+  
 //window.open("http://www.google.com/calendar/event?action=TEMPLATE&text="+tic+"&dates="+title);
-window.open("https://calendar.google.com/calendar/gp?pli=1#~calendar:view=e&bm=1&action=TEMPLATE&text="+tic+"&dates="+title);
+//window.open("https://calendar.google.com/calendar/gp?pli=1#~calendar:view=e&bm=1&action=TEMPLATE&text="+tic+"&dates="+title);
 }
-function fukawa1(){
+function sample(){
+    document.getElementById("img").src ="img/100.jpg";
+};
+function xfukawa1(){
  var num1=document.getElementById('daiya').value;
     if (num1==""){num1="101";}
     var maime=String(num1.slice(-2));
@@ -284,39 +295,36 @@ function fukawa1(){
            case 0:
                var c="<ons-list-item style='background-color: red'";
                var job=nichiyo[aq];
+               var tako="7"+aq;
                break;
            case 6:
                if(kyu.indexOf(hi(add))>0){
            　     var c="<ons-list-item style='background-color: fuchsia";
                var job=nichiyo[aq];
+               var tako="7"+aq;
                break;}
                var c="<ons-list-item style='background-color: aqua'";
                var job=doyo[aq];
+               var tako="6"+aq;
                break;
            default:
            　if(kyu.indexOf(hi(add))>0){
            　     var c="<ons-list-item style='background-color: fuchsia'";
                var job=nichiyo[aq];
+               var tako="7"+aq;
                break;
            　}
                
                var job=ar[aq];
+               var tako=aq;
                var c="<ons-list-item  ";
                break;
        }
     //var aq=parseInt(deban+maime);
     if (job=="   "){job="白";}
     if (job==undefined || deban=="7"){job="休み";}//or maime="7"
-    var result=job.split(" ");
-    if(result[1]){
-      var r1=("0"+result[1].replace(":","")).slice(-4);
-      var r2=("0"+result[2].replace(":","")).slice(-4);
-      var tako=hii(add)+"T"+r1+"00"+"/"+hii(add)+"T"+r2+"00";
-       }else{
-        var pqr=new Date(add.getTime()+24*60*60*1000);
-        var tako=hii(add)+"/"+hii(pqr);
-     }
-       k += c+"tit="+tako+" tic="+deban+maime+result[0]+" onclick='al(this);'  tappable>"+hi(add).slice(5) + w +deban+maime+" "+job +"</ons-list-item>";
+    
+       k += c+"tic="+tako+" onclick='xal(this);'  tappable>"+hi(add).slice(5) + w +deban+maime+" "+job +"</ons-list-item>";
       
       if (((add.getTime()-ad.getTime())/(24*60*60*1000))%28!=0){deban+=1;}else{deban=deban;}
       aday(add);
@@ -337,38 +345,35 @@ function fukawa1(){
            case 0:
                var c="<ons-list-item style='background-color: red'";
                var job=nichiyo[aq];
+               var tako="7"+aq;
                break;
            case 6:
                if(kyu.indexOf(hi(add))>0){
            　     var c="<ons-list-item style='background-color: fuchsia'";
                var job=nichiyo[aq];
+               var tako="7"+aq;
                break;}
                var c="<ons-list-item style='background-color: aqua'";
                var job=doyo[aq];
+               var tako="6"+aq;
                break;
            default:
               
            　if(kyu.indexOf(hi(add))>0){
            　     var c="<ons-list-item style='background-color: fuchsia'";
                var job=nichiyo[aq];
+               var tako="7"+aq;
                break;}
                var c="<ons-list-item  ";
                var job=ar[aq];
+               var tako=aq;
                break;
        }
               if (job=="   "){job="白";}
          if (job==undefined || i==7){job="休み";}
-        var result=job.split(" ");
-    if(result[1]){
-      var r1=("0"+result[1].replace(":","")).slice(-4);
-      var r2=("0"+result[2].replace(":","")).slice(-4);
-      var tako=hii(add)+"T"+r1+"00"+"/"+hii(add)+"T"+r2+"00";
-       }else{
-        var pqr=new Date(add.getTime()+24*60*60*1000);
-        var tako=hii(add)+"/"+hii(pqr);
-     }  
+        
     //   k += c+'<th>' + hi(add) + '</th><td>' + w + '</td><td>' +i+maime+" "+job +'</td></tr>';
-       k += c+"tit="+tako+" tic="+aq+result[0]+" onclick='al(this);'  tappable>"+hi(add).slice(5) + w +aq+" "+job +"</ons-list-item>";
+       k += c+"tic="+tako+" onclick='xal(this);'  tappable>"+hi(add).slice(5) + w +aq+" "+job +"</ons-list-item>";
       
      aday(add);
       day=new Date(hi(add));
@@ -380,39 +385,36 @@ function fukawa1(){
            case 0:
                var c="<ons-list-item style='background-color: red'";
                var job=nichiyo[aq];
+               var tako="7"+aq;
                break;
            case 6:
                if(kyu.indexOf(hi(add))>0){
            　     var c="<ons-list-item style='background-color: fuchsia'";
                var job=nichiyo[aq];
+               var tako="7"+aq;
                break;}
                var c="<ons-list-item style='background-color: aqua'";
                var job=doyo[aq];
+               var tako="6"+aq;
                break;
            default:
            if(kyu.indexOf(hi(add))>0){
            　     var c="<ons-list-item style='background-color: fuchsia'";
                var job=nichiyo[aq];
+               var tako="7"+aq;
                break;}
            
                var c="<ons-list-item  ";
                var job=ar[aq];
+               var tako=aq;
                break;
        }
          if (job=="   "){job="白";}
          if (job==undefined || i==7){job="休み";}
          
-        var result=job.split(" ");
-    if(result[1]){
-      var r1=("0"+result[1].replace(":","")).slice(-4);
-      var r2=("0"+result[2].replace(":","")).slice(-4);
-      var tako=hii(add)+"T"+r1+"00"+"/"+hii(add)+"T"+r2+"00";
-       }else{
-        var pqr=new Date(add.getTime()+24*60*60*1000);
-        var tako=hii(add)+"/"+hii(pqr);
-     }  
+    
     //   k += c+'<th>' + hi(add) + '</th><td>' + w + '</td><td>' +i+maime+" "+job +'</td></tr>';
-      k += c+"tit="+tako+" tic="+aq+result[0]+" onclick='al(this);'  tappable>"+hi(add).slice(5) + w +aq+" "+job +"</ons-list-item>";
+      k += c+"tic="+tako+" onclick='xal(this);'  tappable>"+hi(add).slice(5) + w +aq+" "+job +"</ons-list-item>";
         
       aday(add);
      }
@@ -424,11 +426,11 @@ function fukawa1(){
 }
 
  //k += '<ons-button modifier="large" onclick="location.reload(true)">前のページへ戻る</ons-button>';
- //document.getElementById("all").innerHTML = k;
+ //  document.getElementById("all").innerHTML = k;
    k += '<br/><br/><br/><br/><br/>';
    document.getElementById("all").innerHTML = k;
 }
-function ni(a,b){
+function xni(a,b){
     //alert(a);
     //alert(b);
     var num1=document.getElementById('daiya').value;
@@ -453,26 +455,28 @@ day = new Date(hi(add));//iには'2007/5/5':'PHP攻略完了'の形式の前の�
            case 0:
                var c="<ons-list-item style='background-color: red'";
                var job="休み";
+               var tako="7"+aq;
                break;
            case 6:
                if(kyu.indexOf(hi(add))>0){
-           　     var c="<ons-list-item style='background-color: fuchsia";
+           　     var c="<ons-list-item style='background-color: fuchsia'";
                var job="休み";
+               var tako="6"+aq;
                break;}
                var c="<ons-list-item style='background-color: aqua'";
                //var job=doyo[aq];
                switch(a){
                  case 1:
-                     if (((add.getTime()-ad.getTime())/(24*60*60*1000))%28==0){var job=doyo[aq];}else{var job="休み";}
+                     if (((add.getTime()-ad.getTime())/(24*60*60*1000))%28==0){var job=doyo[aq];var tako="6"+aq;}else{var job="休み";var tako="6"+aq;}
                      break;
                  case 2:
-                     if (((add.getTime()-ad.getTime())/(24*60*60*1000))%28==7){var job=doyo[aq];}else{var job="休み";}
+                     if (((add.getTime()-ad.getTime())/(24*60*60*1000))%28==7){var job=doyo[aq];var tako="6"+aq;}else{var job="休み";var tako="6"+aq;}
                      break;
                  case 3:
-                     if (((add.getTime()-ad.getTime())/(24*60*60*1000))%28==14){var job=doyo[aq];}else{var job="休み";}
+                     if (((add.getTime()-ad.getTime())/(24*60*60*1000))%28==14){var job=doyo[aq];var tako="6"+aq;}else{var job="休み";var tako="6"+aq;}
                      break;
                  case 4:
-                     if (((add.getTime()-ad.getTime())/(24*60*60*1000))%28==21){var job=doyo[aq];}else{var job="休み";}
+                     if (((add.getTime()-ad.getTime())/(24*60*60*1000))%28==21){var job=doyo[aq];var tako="6"+aq;}else{var job="休み";var tako="6"+aq;}
                      break;
                }
                break;
@@ -480,25 +484,19 @@ day = new Date(hi(add));//iには'2007/5/5':'PHP攻略完了'の形式の前の�
            　if(kyu.indexOf(hi(add))>0){
            　     var c="<ons-list-item style='background-color: fuchsia'";
                var job="休み";
+               var tako="7"+aq;
                break;
            　}
                var c="<ons-list-item  ";
                var job=ar[aq];
+               var tako=""+aq;
                break;
        }
     //var aq=parseInt(deban+maime);
     if (job=="   "){job="白";}
     if (job==undefined){job="白";}
-     var result=job.split(" ");
-    if(result[1]){
-      var r1=("0"+result[1].replace(":","")).slice(-4);
-      var r2=("0"+result[2].replace(":","")).slice(-4);
-      var tako=hii(add)+"T"+r1+"00"+"/"+hii(add)+"T"+r2+"00";
-       }else{
-        var pqr=new Date(add.getTime()+24*60*60*1000);
-        var tako=hii(add)+"/"+hii(pqr);
-     }
-     k += c+"tit="+tako+" tic="+deban+maime+result[0]+" onclick='al(this);'  tappable>"+hi(add).slice(5) + w +deban+maime+" "+job +"</ons-list-item>";
+     
+     k += c+"tic="+tako+" onclick='xal(this);'  tappable>"+hi(add).slice(5) + w +deban+maime+" "+job +"</ons-list-item>";
       
      //  k += c+'<th>' + hi(add) + '</th><td>' + w + '</td><td>' +deban+maime+" "+job +'</td></tr>';
       if (((add.getTime()-ad.getTime())/(24*60*60*1000))%28!=1){deban+=1;}else{deban=deban;}
@@ -524,9 +522,9 @@ day = new Date(hi(add));//iには'2007/5/5':'PHP攻略完了'の形式の前の�
 }
 //if (((add.getTime()-ad.getTime())/(24*60*60*1000))%28!=1){deban+=1;}else{deban=deban;}
 
-  //  k += '<ons-button modifier="large" onclick="location.reload(true)">前のページへ戻る</ons-button>';
+   // k += '<ons-button modifier="large" onclick="location.reload(true)">前のページへ戻る</ons-button>';
     //k += '</table><input type="button" value="前のページへ戻る" onclick="location.reload(true)">';
-    //document.getElementById("all").innerHTML = k; 
+  //    document.getElementById("all").innerHTML = k; 
 k += '<br/><br/><br/><br/><br/>';
    document.getElementById("all").innerHTML = k;
-}
+}   

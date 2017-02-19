@@ -2,20 +2,24 @@
 <html>
 <head>
   <meta charset="utf-8">
+  <script src="ncmb.min.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta http-equiv="Content-Security-Policy" content="default-src * data:; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'">
   <script src="components/loader.js"></script>
   <script src="lib/onsenui/js/onsenui.min.js"></script>
   <script src="fukawa.js"></script>
+ 
   <link rel="stylesheet" href="components/loader.css">
   <link rel="stylesheet" href="lib/onsenui/css/onsenui.css">
   <link rel="stylesheet" href="lib/onsenui/css/onsen-css-components.css">
   <link rel="stylesheet" href="css/style.css">
 
  <script src="test1.js"></script>
+  <script src="fukawa2.js"></script>
   <script>
     ons.ready(function() {
-    });
+    
+        });
     window.fn = {};
     window.fn.open = function() {
       var menu = document.getElementById('menu');
@@ -39,12 +43,38 @@ document.addEventListener('init', function(event) {
    // ons.compile(gogle);
     }
   });
-  function ald(){
-       ons.notification.alert('hello');
-    var test = document.getElementById('test');  
-   test.innerHTML="yahooo";
-  }
- 
+ document.addEventListener('init', function(event) {
+    // event.target ＝ <ons-page> 要素
+    if (event.target.matches('#page3')) {
+     // ons.notification.alert('Page 1 is initiated.');
+     var gogle = document.getElementById('new_google3');
+     var parentDiv=gogle.parentNode;
+     parentDiv.replaceChild(elmDiv, gogle);
+   // ons.compile(gogle);
+    }
+  });
+  document.addEventListener('init', function(event) {
+    // event.target ＝ <ons-page> 要素
+    if (event.target.matches('#page2')) {
+     // ons.notification.alert('Page 1 is initiated.');
+     var gogle = document.getElementById('new_google2');
+     var parentDiv=gogle.parentNode;
+     parentDiv.replaceChild(elmDiv, gogle);
+   // ons.compile(gogle);
+   redy();
+    }
+  });
+   document.addEventListener('init', function(event) {
+    // event.target ＝ <ons-page> 要素
+    if (event.target.matches('#page4')) {
+     // ons.notification.alert('Page 1 is initiated.');
+     var gogle = document.getElementById('new_google4');
+     var parentDiv=gogle.parentNode;
+     parentDiv.replaceChild(elmDiv, gogle);
+   // ons.compile(gogle);
+   //redy();
+    }
+  });
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
@@ -59,9 +89,8 @@ document.addEventListener('init', function(event) {
 </head>
 <body>
   <ons-modal id="modal" onclick="modal.hide()">
-  <p id="te" style="text-align: center; font-size:20px">
-  123</p>
-      <img style="width:100%" src="img/101.jpg">
+  <p id="te" style="text-align: center; font-size:20px">123</p>
+ <img onerror="sample()" id="img" style="width:100%" src="img/100.jpg">
 
     
 </ons-modal>
@@ -72,10 +101,10 @@ document.addEventListener('init', function(event) {
           <ons-list-item onclick="fn.load('home.html')" tappable>
             Home
           </ons-list-item>
-          <ons-list-item onclick="fn.load('settings.html')" tappable>
-            Settings
+          <ons-list-item style="background-color: lightgreen" onclick="fn.load('settings.html')" tappable>
+            会員様
           </ons-list-item>
-          <ons-list-item onclick="fn.load('about.html')" tappable>
+          <ons-list-item style="background-color: hotpink" onclick="fn.load('about.html')" tappable>
             About
           </ons-list-item>
         </ons-list>
@@ -87,13 +116,13 @@ document.addEventListener('init', function(event) {
 
   <ons-template id="home.html">
     <ons-page id="page1">
-      <!-- <ons-toolbar> -->
-        <div class="left">
+     <ons-toolbar>
+             <div class="left">
           <ons-toolbar-button onclick="fn.open()">
-            <ons-icon icon="ion-android-bus, material:ion-android-bus"></ons-icon> 
-       <!--   </ons-toolbar-button> -->
-        </div>
-        
+            <ons-icon icon="ion-android-bus, material:ion-android-bus"></ons-icon> </ons-toolbar-button>
+             </div>
+             <div class="center">カレンダー登録</div>
+             <div class="right"><ons-toolbar-button onclick="fn.load('home.html')"><ons-icon icon="ion-social-windows,material:ion-social-windows"></ons-icon></ons-toolbar-button></div>
           </ons-toolbar>
     <div id="all">  
       <p id="test" style="text-align: center; font-size:25px">
@@ -114,33 +143,82 @@ document.addEventListener('init', function(event) {
        <ons-button style="width:20%" onclick='b2();'>B</ons-button>
        <ons-button style="width:20%" onclick='c2();'>C</ons-button>
        <ons-button style="width:20%" onclick='d2();'>D</ons-button>
-    </p>
+    </p><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
 </div>
    <ons-bottom-toolbar style="height:100px">
       <p id="new_google" style="text-align: center;">スポンサーリンク</p> 
    </ons-bottom-toolbar>
    </ons-page>
-  
   </ons-template>
 
   <ons-template id="settings.html">
-  <ons-page>
+  <ons-page id="page2">
     <ons-toolbar>
-      <div class="left">
+              <div class="left">
         <ons-toolbar-button onclick="fn.open()">
           <ons-icon icon="ion-android-bus, material:ion-android-bus"></ons-icon>
         </ons-toolbar-button>
       </div>
-      <div class="center">
-        Settings
-      </div>
+     <div class="center">会員様</div>
+     <div class="right"><ons-toolbar-button onclick="fn.load('settings.html')"><ons-icon icon="ion-social-windows,material:ion-social-windows"></ons-icon></ons-toolbar-button></div>
+          </ons-toolbar>
     </ons-toolbar>
+<div style="text-align: center; margin-top: 30px;" >
+ <p>
+ <ons-input id="mail" modifier="underbar" placeholder="メールアドレス" folat></ons-input>
+ </p><p>
+ <ons-input id="pass" modifier="underbar" placeholder="パスワード" folat></ons-input>
+ </p><p>
+ <ons-button style="width:50%" onclick="taku()">ログイン</ons-button></p>
+ <p><ons-button style="width:50%" onclick="shin()">新規登録</ons-button></p>
+ <p><ons-button style="width:50%" onclick="rest()">リセット</ons-button></p>
+ </div>       
+    <ons-bottom-toolbar style="height:100px">
+      <p id="new_google2" style="text-align: center;">スポンサーリンク</p> 
+   </ons-bottom-toolbar> 
   </ons-page>
+  </ons-template>
+  
+ <ons-template id="kaiin.html">
+    <ons-page id="page4"  >
+     <ons-toolbar style="background-color: lightgreen">
+             <div class="left">
+          <ons-toolbar-button onclick="fn.open()">
+            <ons-icon icon="ion-android-bus, material:ion-android-bus"></ons-icon> </ons-toolbar-button>
+             </div>
+             <div class="center"><ons-button onClick="logout()">ログアウト</ons-button></div>
+             <div class="right"><ons-toolbar-button onclick="fn.load('kaiin.html')"><ons-icon icon="ion-social-windows,material:ion-social-windows"></ons-icon></ons-toolbar-button></div>
+          </ons-toolbar>
+    <div id="all">  
+      <p id="test" style="text-align: center; font-size:25px">
+    今日の本番は</br></br>
+      <ons-input type="number" id="daiya" modifier="underbar" placeholder="123"  min="101" max="952" float></ons-input>
+    ダイヤ
+      </p>
+      <p style="text-align: center;">
+    </br>一般<br/>
+       <ons-button style="background-color: lightgreen;width:40% ; " onclick='xfukawa();'>小</ons-button>
+       <ons-button style="width:40%;background-color: lightgreen" onclick='xfukawa1();'>大</ons-button><br />
+      </br>日曜<br/>
+       小<ons-button style="width:20%;background-color: lightgreen" onclick='xa1();'>A</ons-button>
+       <ons-button style="width:20%;background-color: lightgreen" onclick='xb1();'>B</ons-button>
+       <ons-button style="width:20%;background-color: lightgreen" onclick='xc1();'>C</ons-button>
+       <ons-button style="width:20%;background-color: lightgreen" onclick='xd1();'>D</ons-button><br /><br />
+       大<ons-button style="width:20%;background-color: lightgreen" onclick='xa2();'>A</ons-button>
+       <ons-button style="width:20%;background-color: lightgreen" onclick='xb2();'>B</ons-button>
+       <ons-button style="width:20%;background-color: lightgreen" onclick='xc2();'>C</ons-button>
+       <ons-button style="width:20%;background-color: lightgreen" onclick='xd2();'>D</ons-button>
+    </p><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+</div>
+   <ons-bottom-toolbar style="height:100px">
+      <p id="new_google4" style="text-align: center;">スポンサーリンク</p> 
+   </ons-bottom-toolbar>
+   </ons-page>
   </ons-template>
 
   <ons-template id="about.html">
-  <ons-page>
-    <ons-toolbar>
+  <ons-page id="page3">
+    <ons-toolbar style="background-color: hotpink">
       <div class="left">
         <ons-toolbar-button onclick="fn.open()">
           <ons-icon icon="ion-android-bus, material:ion-android-bus"></ons-icon>
@@ -150,6 +228,18 @@ document.addEventListener('init', function(event) {
         About
       </div>
     </ons-toolbar>
+    <br/>
+     <p style="text-align: center;">
+    </br>まだ工事中だから<br/>m(__)m
+    </p><br /><br />
+    <p>
+    【更新履歴】<br/>
+    2017/02/15　bug取り＆新ダイヤ対応
+    2017/02/01　とりあえず完成
+    </p>
+     <ons-bottom-toolbar style="height:100px">
+      <p id="new_google3" style="text-align: center;">スポンサーリンク</p> 
+   </ons-bottom-toolbar>
   </ons-page>
   </ons-template>
 
