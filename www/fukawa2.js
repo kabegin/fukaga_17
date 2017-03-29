@@ -154,7 +154,7 @@ function xfukawa(){
        }
     //var aq=parseInt(deban+maime);
     if (job=="   "){job="白";}
-    if (job==undefined || deban=="7"){job="休み";}//or maime="7"
+    if (job==undefined || deban=="7" || deban=="6"){job="休み";}//or maime="7"
     k += c+"tic="+tako+" onclick='xal(this);'  tappable>"+hi(add).slice(5) + w +deban+maime+" "+job +"</ons-list-item>";
       
       if (((add.getTime()-ad.getTime())/(24*60*60*1000))%28!=0){deban+=1;}else{deban=deban;}
@@ -199,7 +199,7 @@ function xfukawa(){
                break;
        }
               if (job=="   "){job="白";}
-         if (job==undefined || i==7){job="休み";}
+         if (job==undefined || i==7 || i==6){job="休み";}
       
     //   k += c+'<th>' + hi(add) + '</th><td>' + w + '</td><td>' +i+maime+" "+job +'</td></tr>';
        k += c+"tic="+tako+" onclick='xal(this);'  tappable>"+hi(add).slice(5) + w +aq+" "+job +"</ons-list-item>";
@@ -239,7 +239,7 @@ function xfukawa(){
                break;
        }
          if (job=="   "){job="白";}
-         if (job==undefined || i==7){job="休み";}
+         if (job==undefined || i==7 || i==6){job="休み";}
          
        
     //   k += c+'<th>' + hi(add) + '</th><td>' + w + '</td><td>' +i+maime+" "+job +'</td></tr>';
@@ -322,7 +322,7 @@ function xfukawa1(){
        }
     //var aq=parseInt(deban+maime);
     if (job=="   "){job="白";}
-    if (job==undefined || deban=="7"){job="休み";}//or maime="7"
+    if (job==undefined || deban=="7" || deban=="6"){job="休み";}//or maime="7"
     
        k += c+"tic="+tako+" onclick='xal(this);'  tappable>"+hi(add).slice(5) + w +deban+maime+" "+job +"</ons-list-item>";
       
@@ -370,7 +370,7 @@ function xfukawa1(){
                break;
        }
               if (job=="   "){job="白";}
-         if (job==undefined || i==7){job="休み";}
+         if (job==undefined || i==7 || i==6){job="休み";}
         
     //   k += c+'<th>' + hi(add) + '</th><td>' + w + '</td><td>' +i+maime+" "+job +'</td></tr>';
        k += c+"tic="+tako+" onclick='xal(this);'  tappable>"+hi(add).slice(5) + w +aq+" "+job +"</ons-list-item>";
@@ -410,7 +410,7 @@ function xfukawa1(){
                break;
        }
          if (job=="   "){job="白";}
-         if (job==undefined || i==7){job="休み";}
+         if (job==undefined || i==7 || i==6){job="休み";}
          
     
     //   k += c+'<th>' + hi(add) + '</th><td>' + w + '</td><td>' +i+maime+" "+job +'</td></tr>';

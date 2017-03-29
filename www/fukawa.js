@@ -134,7 +134,7 @@ function fukawa(){
        }
     //var aq=parseInt(deban+maime);
     if (job=="   "){job="白";}
-    if (job==undefined || deban=="7"){job="休み";}//or maime="7"
+    if (job==undefined || deban=="7" || deban=="6"){job="休み";}//or maime="7"
     var result=job.split(" ");
     if(result[1]){
       var r1=("0"+result[1].replace(":","")).slice(-4);
@@ -183,7 +183,7 @@ function fukawa(){
                break;
        }
               if (job=="   "){job="白";}
-         if (job==undefined || i==7){job="休み";}
+         if (job==undefined || i==7 || i==6){job="休み";}
         var result=job.split(" ");
     if(result[1]){
       var r1=("0"+result[1].replace(":","")).slice(-4);
@@ -226,7 +226,7 @@ function fukawa(){
                break;
        }
          if (job=="   "){job="白";}
-         if (job==undefined || i==7){job="休み";}
+         if (job==undefined || i==7 || i==6){job="休み";}
          
         var result=job.split(" ");
     if(result[1]){
@@ -306,7 +306,7 @@ function fukawa1(){
        }
     //var aq=parseInt(deban+maime);
     if (job=="   "){job="白";}
-    if (job==undefined || deban=="7"){job="休み";}//or maime="7"
+    if (job==undefined || deban=="7" || deban=="6"){job="休み";}//or maime="7"
     var result=job.split(" ");
     if(result[1]){
       var r1=("0"+result[1].replace(":","")).slice(-4);
@@ -357,7 +357,7 @@ function fukawa1(){
                break;
        }
               if (job=="   "){job="白";}
-         if (job==undefined || i==7){job="休み";}
+         if (job==undefined || i==7 || i==6){job="休み";}
         var result=job.split(" ");
     if(result[1]){
       var r1=("0"+result[1].replace(":","")).slice(-4);
@@ -400,7 +400,7 @@ function fukawa1(){
                break;
        }
          if (job=="   "){job="白";}
-         if (job==undefined || i==7){job="休み";}
+         if (job==undefined || i==7 || i==6){job="休み";}
          
         var result=job.split(" ");
     if(result[1]){
