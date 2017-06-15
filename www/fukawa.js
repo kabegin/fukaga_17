@@ -536,4 +536,5 @@ function printout(){
     test=document.getElementsByClassName("center list__item__center");
     alert(test.item(3).textContent);
     
+    
 }
