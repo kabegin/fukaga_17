@@ -324,6 +324,7 @@ function fukawa1(){
      // maime=(parseInt(maime, 10))%48+1;
      // if (maime<10){maime="0"+maime;}
       if((parseInt(maime, 10))%2==0){maime=(parseInt(maime, 10)-1)%48;}else{maime=(parseInt(maime, 10)+3)%48;}
+      if(maime==0){maime=48;}      
       if(maime==50){maime=2;}
       if (maime<10){maime="0"+maime;}
      for(j=1;j<30;j++){
@@ -529,4 +530,10 @@ day = new Date(hi(add));//iには'2007/5/5':'PHP攻略完了'の形式の前の�
     //document.getElementById("all").innerHTML = k; 
 k += '<br/><br/><br/><br/><br/>';
    document.getElementById("all").innerHTML = k;
+}
+
+function printout(){
+    test=document.getElementsByClassName("center list__item__center");
+    alert(test.item(3).textContent);
+    
 }
