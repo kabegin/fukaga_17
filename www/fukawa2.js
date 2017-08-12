@@ -20,7 +20,8 @@
                 // ログイン
                // var ncmb = new NCMB("6ca2ff8ccaa6bf29a5f132fb86e855f54a053f6cb052ca6eb4cac54384344b92","8530ec559cbc8f3e173359c1a64a7e614249a8632a95f6cafdc8791dbaaaa813");     
                 ncmb.User.loginWithMailAddress(username, password)
-                .then(function() {
+                .then(function(user) {
+                    return user.logout();
                     // ログイン成功
                 //     alert("ログイン成功");
                     fn.load('kaiin.html');
@@ -60,7 +61,14 @@
            });
     }
     function logout(){
-  
+        var currentUser = ncmb.User.getCurrentUser();
+if (currentUser) {
+   // currentUser=null;
+    alert("ログイン中のユーザー: " + currentUser.get("userName"));
+    //ncmb.User.login(currentUser);
+    //currentUser=null;
+    ncmb.sessionToken = null;
+} 
         ncmb.User.logout().then(function(){
             location.href="./index.html";
         })
